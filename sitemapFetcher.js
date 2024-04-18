@@ -28,9 +28,14 @@ async function parseXmlData(xmlData) {
     return urlList
 }
 
-fetchSiteMap(sitemapUrl)
-.then(xmlData => {
-    const parsedSitemap = parseXmlData(xmlData); 
-    console.log(parsedSitemap);
-})
-.catch(error => console.error('errorfetching:', error))
+module.exports = {
+    fetchSiteMap,
+    parseXmlData
+}
+
+// fetchSiteMap(sitemapUrl)
+// .then(xmlData => {
+//     const parsedSitemap = parseXmlData(xmlData); 
+//     console.log(parsedSitemap);
+// })
+// .catch(error => console.error('errorfetching:', error))
