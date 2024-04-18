@@ -1,5 +1,6 @@
 const fetch = (...args) =>
 import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const { XMLParser } = require('fast-xml-parser')
 
 const sitemapUrl = "https://www.london.gov.uk/sitemap.xml?page=1"
 
@@ -16,6 +17,15 @@ async function fetchSiteMap(sitemapUrl) {
     }
 }
 
+async function parseXmlData(xmlData) {
+    const parser = new XMLParser();
+    const parsedSiteMap = parser.parse(xmlData)
+    return parsedSiteMap
+}
+
 fetchSiteMap(sitemapUrl)
-.then(xmlData => console.log(xmlData))
+.then(xmlData => {
+    const parsedSitemap = parseXmlData(xmlData); 
+    console.log(parsedSitemap);
+})
 .catch(error => console.error('errorfetching:', error))
