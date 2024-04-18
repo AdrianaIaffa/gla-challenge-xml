@@ -20,7 +20,12 @@ async function fetchSiteMap(sitemapUrl) {
 async function parseXmlData(xmlData) {
     const parser = new XMLParser();
     const parsedSiteMap = parser.parse(xmlData)
-    return parsedSiteMap
+    // return parsedSiteMap.urlset.url[0].loc
+    const urlList = []
+    parsedSiteMap.urlset.url.forEach(url => {
+        urlList.push(url.loc)
+    })
+    return urlList
 }
 
 fetchSiteMap(sitemapUrl)
