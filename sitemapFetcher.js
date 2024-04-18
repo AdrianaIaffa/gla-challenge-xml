@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+const fetch = (...args) =>
+import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const sitemapUrl = "https://www.london.gov.uk/sitemap.xml?page=1"
 
@@ -14,3 +15,7 @@ async function fetchSiteMap(sitemapUrl) {
         console.error('Error Response:', error)
     }
 }
+
+fetchSiteMap(sitemapUrl)
+.then(xmlData => console.log(xmlData))
+.catch(error => console.error('errorfetching:', error))
