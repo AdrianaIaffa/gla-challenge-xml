@@ -46,7 +46,7 @@ async function processUrls() {
         const matchesOnPage = matches.length;
         console.log(`Keyword: ${keyword} - Times Found: ${matchesOnPage} (on page: ${url})`);
         if (matchesOnPage > 0) {
-            results.push({ url, count: matchesOnPage });
+            results.push({ url, count: matchesOnPage, keyword });
         }
     } else {
         console.log(`No matches found for keyword in ${url}`);
@@ -62,8 +62,9 @@ async function processUrls() {
         console.error(`Error fetching ${url}: ${error.message}`);
         continue;
       }
-
+        
     }
+    return { keyword, results }
   } catch (error) {
 
     console.error("Error response:", error);
