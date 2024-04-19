@@ -13,7 +13,7 @@ async function processUrls() {
     const urlList = await parseXmlData(xmlData);
 
     const keyword = readlineSync.question('Enter keyword or phrase: ')
-    // const totalMatches = []
+    const results = []
     for (const url of urlList) {
         
       try {
@@ -32,12 +32,25 @@ async function processUrls() {
        const keywordRegExp = new RegExp(keyword, 'gi')
        const matches = bodyText.match(keywordRegExp)
        
-       if(matches === null) {
-        console.log("no matches")
-       } else {
-        // totalMatches.push(matches.length)
-        console.log(`Keyword: ${keyword} - Times Found: ${matches.length} (on page: ${url})`)
-       }
+    //    if(matches !== null) {
+    //     const matchCount = matches.length
+    //     console.log(`Keyword: ${keyword} - Times Found: ${matches.length} (on page: ${url})`)
+    //     if {matchCount > 0} {
+    //         results.push({ url, count: matchCount });
+    //         }
+    //    } else {
+    //     console.log('No Matches Found')
+         
+    //    }
+    if (matches !== null) {
+        const matchesOnPage = matches.length;
+        console.log(`Keyword: ${keyword} - Times Found: ${matchesOnPage} (on page: ${url})`);
+        if (matchesOnPage > 0) {
+            results.push({ url, count: matchesOnPage, keyword });
+        }
+    } else {
+        console.log(`No matches found for keyword in ${url}`);
+    }
        
 
        console.log(`Processed data from ${url}`);
@@ -49,8 +62,9 @@ async function processUrls() {
         console.error(`Error fetching ${url}: ${error.message}`);
         continue;
       }
-
+        
     }
+    return { keyword, results }
   } catch (error) {
 
     console.error("Error response:", error);
