@@ -1,6 +1,6 @@
 # Project Description
 
-This project analyzes web pages within a sitemap to locate a specified keyword or phrase. It generates a CSV report detailing the keyword, the number of times it appears on each page, and the corresponding URLs.
+This project automatically analyses web pages listed within a specific sitemap (`https://www.london.gov.uk/sitemap.xml?page=1`) to locate a keyword or phrase that you input. After scanning, it generates a CSV file report with details including the frequency of appearances of the keyword and the URLs where they were found.
 
 # Prerequisites
 Requires [Node.js](https://nodejs.org/en) to run. You can download and install it from the official [Node.js](https://nodejs.org/en) website.
@@ -16,7 +16,7 @@ Requires [Node.js](https://nodejs.org/en) to run. You can download and install i
 # Usage
 * Run the Project: Execute the project from your terminal:
     ```sh
-    npm node.js
+    node index.js
     ```
  * Enter a Keyword: The script will prompt you to enter the keyword or phrase you want to search for. Type it in and press enter.
 
