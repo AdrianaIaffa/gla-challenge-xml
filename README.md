@@ -37,7 +37,7 @@ Requires [Node.js](https://nodejs.org/en) to run. You can download and install i
 
 
 # Workflow
-Here is a step by step on how I approached this project [Notion](https://difficult-lipstick-2e0.notion.site/Code-Challenge-579a7e787da54526807e7c3b0518d723?pvs=4)
+Here is a step by step on how I approached this project [Notion](https://difficult-lipstick-2e0.notion.site/Code-Challenge-42dec6420fbb466a89c589c3f05fe722?pvs=4)
 **Workflow**
 
 1. **Retrieving Sitemap URLs**
