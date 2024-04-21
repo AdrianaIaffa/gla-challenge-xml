@@ -17,15 +17,31 @@ async function fetchSiteMap(sitemapUrl) {
     }
 }
 
+// async function parseXmlData(xmlData) {
+//     const parser = new XMLParser();
+//     const parsedSiteMap = parser.parse(xmlData)
+//     // return parsedSiteMap.urlset.url[0].loc
+//     const urlList = []
+//     parsedSiteMap.urlset.url.forEach(url => {
+//         urlList.push(url.loc)
+//     })
+//     // const limitedUrlSet = parsedSiteMap.urlset.url.slice(0, 3);
+//     // limitedUrlSet.forEach(url => {
+//     //     urlList.push(url.loc)
+//     // })
+//     return urlList
+// }
+
 async function parseXmlData(xmlData) {
     const parser = new XMLParser();
-    const parsedSiteMap = parser.parse(xmlData)
-    // return parsedSiteMap.urlset.url[0].loc
-    const urlList = []
-    parsedSiteMap.urlset.url.forEach(url => {
-        urlList.push(url.loc)
-    })
-    return urlList
+    const parsedSiteMap = parser.parse(xmlData);
+    const urlList = [];
+
+    for (const url of parsedSiteMap.urlset.url.slice(0, 3)) {
+        urlList.push(url.loc);
+    }
+
+    return urlList;
 }
 
 module.exports = {
