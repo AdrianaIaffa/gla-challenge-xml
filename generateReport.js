@@ -10,13 +10,13 @@ async function generateReport(keyword, results) {
       url: result.url         
   }));
 
-
-    const ws = fs.createWriteStream("search_report.csv");
+  const filename = `search_report_keyword_${keyword}.csv`;
+    const ws = fs.createWriteStream(filename);
     fastcsv
       .write(csvData, { headers: true }) 
       .pipe(ws);
 
-    console.log("CSV report generated as search_report.csv"); 
+    console.log(`CSV report generated as ${filename}`); 
 }
 
 module.exports = { generateReport }; 
