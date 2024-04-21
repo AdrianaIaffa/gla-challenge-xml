@@ -4,7 +4,12 @@ const fs = require('fs');
 
 
 async function generateReport(keyword, results) {
-    const csvData = results.map(result => [keyword, result.count, result.url]); 
+    const csvData = results.map(result => ({
+      keyword: keyword,       
+      "total count": result.count,  
+      url: result.url         
+  }));
+
 
     const ws = fs.createWriteStream("search_report.csv");
     fastcsv
