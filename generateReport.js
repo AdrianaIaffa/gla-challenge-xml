@@ -32,22 +32,32 @@ async function generateReport(keyword, results) {
 }
 
 function generatePDFReport(keyword, results) {
+  
   try {
-      const doc = new jsPDF();
+    const doc = new jsPDF();
 
-      doc.text(`Search Report for Keyword: ${keyword}`, 10, 10);
-      let y = 20;
+    doc.text(`Search Report for Keyword: ${keyword}`, 10, 10);
+    let y = 20;
 
-      // ... (rest of your PDF generation logic) ...
+    doc.text("Keyword", 10, y);
+    doc.text("Total Count", 70, y);
+    doc.text("URL", 130, y);
 
-      const pdfFilename = `search_report_keyword_${keyword}.pdf`;
-      doc.save(pdfFilename); 
+    y += 10;
 
-      console.log(`PDF report generated as ${pdfFilename}`);
+    results.forEach((result) => {
+      doc.text(keyword, 10, y);
+      doc.text(result.count.toString(), 70, y);
+      doc.text(result.url, 130, y);
+      y += 10;
+    });
 
+    const pdfFilename = `search_report_keyword_${keyword}.pdf`;
+    doc.save(pdfFilename);
+
+    console.log(`PDF report generated as ${pdfFilename}`);
   } catch (error) {
-      console.error('Error generating PDF report:', error);
-      // Potential Improvement: Handle error propagation or reporting
+    console.error("Error generating PDF report:", error);
   }
 }
 
