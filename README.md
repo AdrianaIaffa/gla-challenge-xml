@@ -10,7 +10,8 @@ Requires [Node.js](https://nodejs.org/en) to run. You can download and install i
  * Navigate to the Project Directory: Open a terminal or command prompt and navigate to the root of the project directory.
  * Install Dependencies: Install the required libraries using the following command:
     ```sh
-    npm install fast-csv fast-xml-parser node-fetch node-html-parser readline-sync 
+    npm install fast-csv fast-xml-parser node-fetch node-html-parser readline-sync cli-progress jspdf
+
     ```
 
 # Usage
@@ -29,11 +30,14 @@ Requires [Node.js](https://nodejs.org/en) to run. You can download and install i
 
 # Required Libraries
 
-* [ **fast-csv:**](https://www.npmjs.com/package/fast-csv) A library for parsing and creating CSV (Comma-Separated Values) files quickly and efficiently.
+* [**fast-csv:**](https://www.npmjs.com/package/fast-csv) A library for parsing and creating CSV (Comma-Separated Values) files quickly and efficiently.
 * [**fast-xml-parser:**](https://www.npmjs.com/package/fast-xml-parser) Designed to convert XML data into JavaScript objects/JSON and vice versa. It offers high performance and flexibility.
-* [ **node-fetch:**](https://www.npmjs.com/package/node-fetch) A lightweight module that brings the familiar fetch function for making HTTP requests within Node.js environments.
+* [**node-fetch:**](https://www.npmjs.com/package/node-fetch) A lightweight module that brings the familiar fetch function for making HTTP requests within Node.js environments.
 * [**node-html-parser:**](https://www.npmjs.com/package/node-html-parser) Parses HTML strings into a convenient tree structure for manipulation or extraction of data.
-* [ **readline-sync:** ](https://www.npmjs.com/package/readline-sync)Provides a way to get user input in a Node.js application in a synchronous fashion, allowing you to pause script execution until input is received.
+* [**readline-sync:** ](https://www.npmjs.com/package/readline-sync)Provides a way to get user input in a Node.js application in a synchronous fashion, allowing you to pause script execution until input is received.
+* [**cli-progress:**](https://www.npmjs.com/package/cli-progress) A library for showing progress bars in the terminal.
+* [**jspdf:**](https://www.npmjs.com/package/jspdf) A library for generating PDF files.
+
 
 
 # Workflow
