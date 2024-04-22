@@ -30,6 +30,7 @@ async function generateReport(keyword, results) {
 }
 
 function generatePDFReport(keyword, results) {
+  
   try {
     const doc = new jsPDF();
 
