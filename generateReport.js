@@ -5,23 +5,32 @@ const { jsPDF } = require("jspdf");
 
 
 async function generateReport(keyword, results) {
-    const csvData = results.map(result => ({
-      keyword: keyword,       
-      "total count": result.count,  
-      url: result.url         
-  }));
+  try { // Wrap code in a try block for potential errors
+      const csvData = results.map(result => ({
+          keyword: keyword,       
+          "total count": result.count,
+          url: result.url         
+      }));
 
-  const filename = `search_report_keyword_${keyword}.csv`;
-    const ws = fs.createWriteStream(filename);
-    fastcsv
-      .write(csvData, { headers: true }) 
-      .pipe(ws)
-      .on('finish', () => {
-        console.log(`CSV report generated as ${filename}`);
-        generatePDFReport(keyword, results);
-    });
+      const filename = `search_report_keyword_${keyword}.csv`;
+      const ws = fs.createWriteStream(filename); 
 
+      fastcsv
+          .write(csvData, { headers: true }) 
+          .pipe(ws)
+          .on('error', (error) => { // Error handling for CSV writing
+              console.error('Error writing CSV:', error);
+          }) 
+          .on('finish', () => {
+              console.log(`CSV report generated as ${filename}`);
+              generatePDFReport(keyword, results); 
+          });  
+      
+  } catch (error) { 
+      console.error('Error generating report:', error); 
+  }
 }
+
 
 function generatePDFReport(keyword, results) {
   const doc = new jsPDF();
