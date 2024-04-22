@@ -15,18 +15,24 @@ Requires [Node.js](https://nodejs.org/en) to run. You can download and install i
     ```
 
 # Usage
-* Run the Project: Execute the project from your terminal:
+1. * Modify URL limit (optional):
+Open the sitemapFetcher.js file.
+Within the for loop (for (const url of parsedSiteMap.urlset.url.slice(0, 1))), adjust the number inside the slice() method to control how many URLs you want to process.
+
+2. * Start the project: In your terminal, run the following command:
     ```sh
     node index.js
     ```
- * Enter a Keyword: The script will prompt you to enter the keyword or phrase you want to search for. Type it in and press enter.
+ 
+3. * Enter a Keyword: After a couple of seconds, you'll be asked to provide the keyword or phrase you want to search for. Type it in and press enter.
 
-* The project is currently limited to retrieve 3 urls for testing purposes
+4. * Wait for the analysis: The script will process the web pages, searching for your keyword. You'll see a progress bar in your terminal.
 
-* Report Generation: Once the analysis is complete, a CSV report named "search_report.csv" will be created in your project directory. The report will include the following columns:
-    1. * Keyword: The keyword you searched for.
-    2. * Count: Number of times the keyword appeared on a page.
-    3. * URL: The page's address where the keyword was found.
+5. * Find the results: Once finished, the project will generate these resources:
+
+    1. * html_files folder: Contains extracted text content from each analyzed webpage (as .txt files). To double-check results, use "Find" (Ctrl+F or Cmd+F) within your code editor, making sure to select "Match whole word".
+    2. * search_report_keyword_{keyword}.csv: A CSV file showing the URLs and how many times your keyword appeared on each page.
+    3. * search_report_keyword_{keyword}.pdf: A PDF report giving you a user-friendly overview of the findings.
 
 # Required Libraries
 
