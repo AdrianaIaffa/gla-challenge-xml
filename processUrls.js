@@ -3,6 +3,8 @@ const fetch = (...args) =>
 const { fetchSiteMap, parseXmlData } = require("./sitemapFetcher");
 const HTMLParser = require('node-html-parser')
 const readlineSync = require('readline-sync')
+const ProgressBar = require('cli-progress'); 
+
 
 const sitemapUrl = "https://www.london.gov.uk/sitemap.xml?page=1";
 
@@ -14,6 +16,10 @@ async function processUrls() {
 
     const keyword = readlineSync.question('Enter keyword or phrase: ')
     const results = []
+
+    const bar = new ProgressBar.SingleBar({}, ProgressBar.Presets.shades_classic); 
+    bar.start(urlList.length, 0); 
+
     for (const url of urlList) {
         
       try {
@@ -62,8 +68,11 @@ async function processUrls() {
         console.error(`Error fetching ${url}: ${error.message}`);
         continue;
       }
+      bar.increment();
         
     }
+    bar.update(urlList.length)
+    bar.stop()
     return { keyword, results }
   } catch (error) {
 
