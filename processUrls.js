@@ -16,6 +16,7 @@ async function processUrls() {
     const urlList = await parseXmlData(xmlData);
 
     const keyword = readlineSync.question('Enter keyword or phrase: ')
+    console.log()
     const results = []
 
     const bar = new ProgressBar.SingleBar({}, ProgressBar.Presets.shades_classic); 
@@ -55,6 +56,7 @@ async function processUrls() {
 
           if (matches !== null) {
               const matchesOnPage = matches.length;
+              console.log()
               console.log(`Keyword: ${keyword} - Times Found: ${matchesOnPage} `);
               if (matchesOnPage > 0) {
                   results.push({ url, count: matchesOnPage, keyword });
@@ -62,7 +64,9 @@ async function processUrls() {
           } else {
               console.log(`No matches found for keyword in ${url}`);
           }
+          console.log()
           console.log(`Processed data from ${url}`); 
+          console.log()
        } 
 
       } catch (error) {
@@ -74,6 +78,7 @@ async function processUrls() {
     
     bar.update(urlList.length)
     bar.stop()
+    console.log()
     return { keyword, results }
   } catch (error) {
     console.error("Error response:", error);
