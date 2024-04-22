@@ -8,25 +8,31 @@ async function fetchSiteMap(sitemapUrl) {
     try {
         const response = await fetch(sitemapUrl)
         if(!response.ok) {
-            console.error(`Error Response: ${response.status}`)
+            console.error(`Error fetching ${sitemapUrl}: ${response.status}`)
         }
         const xmlData = await response.text()
         return xmlData
     } catch (error) {
-        console.error('Error Response:', error)
+        console.error('Error fetching sitemap:', error)
     }
 }
 
 async function parseXmlData(xmlData) {
-    const parser = new XMLParser();
-    const parsedSiteMap = parser.parse(xmlData);
-    const urlList = [];
-
-    for (const url of parsedSiteMap.urlset.url.slice(0, 1)) {
-        urlList.push(url.loc);
+    try {
+        const parser = new XMLParser();
+        const parsedSiteMap = parser.parse(xmlData);
+        const urlList = [];
+    
+        for (const url of parsedSiteMap.urlset.url.slice(0, 1)) {
+            urlList.push(url.loc);
+        }
+    
+        return urlList;
+    } catch (error) {
+        console.error('Error parsing sitemap XML:', error); 
+        return []; 
     }
-
-    return urlList;
+  
 }
 
 module.exports = {
