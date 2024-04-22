@@ -8,12 +8,12 @@ async function fetchSiteMap(sitemapUrl) {
     try {
         const response = await fetch(sitemapUrl)
         if(!response.ok) {
-            console.error(`Error Response: ${response.status}`)
+            console.error(`Error fetching ${sitemapUrl}: ${response.status}`)
         }
         const xmlData = await response.text()
         return xmlData
     } catch (error) {
-        console.error('Error Response:', error)
+        console.error('Error fetching sitemap:', error)
     }
 }
 
