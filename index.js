@@ -1,6 +1,6 @@
-const { fetchSiteMap, parseXmlData } = require('./sitemapFetcher');  
-const { processUrls } = require('./processUrls')
-const { generateReport } = require('./generateReport');
+const { fetchSiteMap, parseXmlData } = require('./src/sitemapFetcher');  
+const { processUrls } = require('./src/processUrls')
+const { generateReport } = require('./src/generateReport');
 
 const sitemapUrl = "https://www.london.gov.uk/sitemap.xml?page=1"
 

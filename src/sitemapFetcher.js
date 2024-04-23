@@ -23,7 +23,7 @@ async function parseXmlData(xmlData) {
         const parsedSiteMap = parser.parse(xmlData);
         const urlList = [];
     
-        for (const url of parsedSiteMap.urlset.url.slice(0, 1)) {
+        for (const url of parsedSiteMap.urlset.url.slice(0, 10)) {
             urlList.push(url.loc);
         }
     

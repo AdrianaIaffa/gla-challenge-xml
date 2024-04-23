@@ -51,7 +51,7 @@ async function processUrls() {
           fs.writeFileSync(filePath, bodyText);
           console.log(`Successfully saved HTML content for ${url} to html_files`);
 
-          const keywordRegExp = new RegExp('\\b' + keyword + '\\b', 'gi');
+          const keywordRegExp = new RegExp('\\b' + keyword + '\\b', 'g');
           const matches = bodyText.match(keywordRegExp);
 
           if (matches !== null) {

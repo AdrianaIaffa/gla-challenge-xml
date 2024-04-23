@@ -5,7 +5,7 @@ const { jsPDF } = require("jspdf");
 
 
 async function generateReport(keyword, results) {
-  try { // Wrap code in a try block for potential errors
+  try {
       const csvData = results.map(result => ({
           keyword: keyword,       
           "total count": result.count,
@@ -18,7 +18,7 @@ async function generateReport(keyword, results) {
       fastcsv
           .write(csvData, { headers: true }) 
           .pipe(ws)
-          .on('error', (error) => { // Error handling for CSV writing
+          .on('error', (error) => { 
               console.error('Error writing CSV:', error);
           }) 
           .on('finish', () => {
